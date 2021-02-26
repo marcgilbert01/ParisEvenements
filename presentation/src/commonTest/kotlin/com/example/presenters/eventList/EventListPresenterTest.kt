@@ -6,6 +6,8 @@ import com.nowtv.domain.common.BaseMapperToPresentation
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.Dispatchers
+import net.freshclouds.recipes.presentation.common.BasePresenter
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -25,6 +27,8 @@ internal class EventListPresenterTest {
 
     @BeforeTest
     fun setup() {
+        BasePresenter.mainDispatcher = Dispatchers.Unconfined
+        BasePresenter.defaultDispatcher = Dispatchers.Unconfined
         cut = EventListPresenter(
             view = view,
             getEventsListUseCase = getEventsListUseCase,

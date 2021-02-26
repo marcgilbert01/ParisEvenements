@@ -10,11 +10,24 @@ class EventListPresenter(
     private val eventToEventItemUiModelConverter: BaseMapperToPresentation<Event, EventListContract.EventItemUiModel>
 ) : EventListContract.Presenter() {
 
+    private val viewModel = ViewModel()
+
     override suspend fun onStart() {
-        TODO("Not yet implemented")
+        viewModel.loadingSpinnerOn = true
+        invalidate()
+        getEventsListUseCase.exeUseCase(GetEventsListUseCase.Params(GetEventsListUseCase.City.PARIS)).let {
+            viewModel.loadingSpinnerOn = false
+            viewModel.eventListItem = eventToEventItemUiModelConverter.mapToPresentation(it)
+            invalidate()
+        }
     }
 
     override suspend fun doInvalidate() {
-        TODO("Not yet implemented")
+        view.displayEventList(viewModel.eventListItem)
+    }
+
+    private class ViewModel {
+        var loadingSpinnerOn = false
+        var eventListItem = listOf<EventListContract.EventItemUiModel>()
     }
 }

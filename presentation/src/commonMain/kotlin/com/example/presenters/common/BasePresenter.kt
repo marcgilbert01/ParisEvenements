@@ -5,10 +5,14 @@ import kotlinx.coroutines.flow.Flow
 
 abstract class BasePresenter {
 
+    companion object {
+        var mainDispatcher: CoroutineDispatcher = Dispatchers.Main
+        var defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
+    }
     private var job: Job? = null
 
     fun onViewStart() {
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(defaultDispatcher).launch {
             onStart()
         }.also {
             job = it
@@ -17,7 +21,7 @@ abstract class BasePresenter {
 
     protected abstract suspend fun onStart()
 
-    suspend fun invalidate() = withContext(Dispatchers.Main) {
+    suspend fun invalidate() = withContext(mainDispatcher) {
         doInvalidate()
     }
 
