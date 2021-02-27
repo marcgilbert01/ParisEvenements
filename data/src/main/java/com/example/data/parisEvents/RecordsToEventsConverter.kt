@@ -11,6 +11,7 @@ class RecordsToEventsConverter : BaseMapperToDomain<Record, Event>() {
         const val DESCRIPTION_FIELD_NAME = "description"
         const val ADDRESS_NAME_FIELD_NAME = "address_name"
         const val CATEGORY_NAME_FIELD_NAME = "category"
+        const val COVER_URL_FIELD_NAME = "cover_url"
     }
 
     override fun mapToDomain(toBeTransformed: Record): Event {
@@ -20,7 +21,8 @@ class RecordsToEventsConverter : BaseMapperToDomain<Record, Event>() {
             summary = toBeTransformed.fields[LEAD_TEXT_FIELD_NAME] as String,
             description = toBeTransformed.fields[DESCRIPTION_FIELD_NAME] as String,
             address = toBeTransformed.fields[ADDRESS_NAME_FIELD_NAME] as String,
-            category = toBeTransformed.fields[CATEGORY_NAME_FIELD_NAME] as String
+            category = toBeTransformed.fields[CATEGORY_NAME_FIELD_NAME] as String,
+            imageUrl = toBeTransformed.fields[COVER_URL_FIELD_NAME] as String
         )
     }
 }

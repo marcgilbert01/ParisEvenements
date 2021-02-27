@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseAndroidApp">
-        <activity android:name="com.example.ui.parisEvents.ParisEventListActivity"></activity>
+        <activity android:name="com.example.ui.parisEvents.ParisEventDetailActivity"></activity>
+        <activity android:name="com.example.ui.parisEvents.ParisEventListActivity" />
         <activity android:name=".DayCountDownActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

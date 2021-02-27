@@ -1,5 +1,6 @@
 package com.example.ui.parisEvents
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,16 +28,21 @@ class ParisEventListActivity : AppCompatActivity(), EventListContract.View {
                     recordsToEventsConverter = RecordsToEventsConverter())),
             eventToEventItemUiModelConverter = EventToEventItemUiModelConverter()
         )
+        findViewById<RecyclerView>(R.id.event_list_recyclerView)?.let { recyclerView ->
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            ParisEventListAdapter().let { eventAdapter ->
+                adapter = eventAdapter
+                recyclerView.adapter = eventAdapter
+                eventAdapter.onItemClicked = { position ->
+                    presenter?.onItemClicked(position)
+                }
+            }
+        }
     }
 
     override fun onStart() {
         super.onStart()
         presenter?.onViewStart()
-        findViewById<RecyclerView>(R.id.event_list_recyclerView)?.let {
-            it.layoutManager = LinearLayoutManager(this)
-            adapter = ParisEventListAdapter()
-            it.adapter = adapter
-        }
     }
 
     override fun onStop() {
@@ -51,5 +57,11 @@ class ParisEventListActivity : AppCompatActivity(), EventListContract.View {
 
     override fun displayEventList(eventListUiModels: List<EventListContract.EventItemUiModel>) {
         adapter?.update(eventListUiModels)
+    }
+
+    override fun navigateToEvenDetail(eventId: String) {
+        val intent = Intent(this, ParisEventDetailActivity::class.java)
+        intent.putExtra(ParisEventDetailActivity.EVENT_ID_PARAM, eventId)
+        startActivity(intent)
     }
 }

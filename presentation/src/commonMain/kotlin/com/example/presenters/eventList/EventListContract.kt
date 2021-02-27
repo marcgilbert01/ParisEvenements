@@ -6,9 +6,12 @@ interface EventListContract {
 
     interface View {
         fun displayEventList(eventListUiModels: List<EventItemUiModel>)
+        fun navigateToEvenDetail(eventId: String)
     }
 
-    abstract class Presenter: BasePresenter()
+    abstract class Presenter: BasePresenter() {
+        abstract fun onItemClicked(position: Int)
+    }
 
     data class EventItemUiModel(
         val title: String?,

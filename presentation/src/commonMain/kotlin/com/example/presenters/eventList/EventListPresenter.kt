@@ -11,11 +11,13 @@ class EventListPresenter(
 ) : EventListContract.Presenter() {
 
     private val viewModel = ViewModel()
+    private var eventList: List<Event>? = null
 
     override suspend fun onStart() {
         viewModel.loadingSpinnerOn = true
         invalidate()
         getEventsListUseCase.exeUseCase(GetEventsListUseCase.Params(GetEventsListUseCase.City.PARIS)).let {
+            eventList = it
             viewModel.loadingSpinnerOn = false
             viewModel.eventListItem = eventToEventItemUiModelConverter.mapToPresentation(it)
             invalidate()
@@ -29,5 +31,11 @@ class EventListPresenter(
     private class ViewModel {
         var loadingSpinnerOn = false
         var eventListItem = listOf<EventListContract.EventItemUiModel>()
+    }
+
+    override fun onItemClicked(position: Int) {
+        eventList?.let {
+            view.navigateToEvenDetail(it[position].eventId)
+        }
     }
 }

@@ -6,5 +6,6 @@ data class Event (
     val summary: String?,
     val description: String?,
     val address: String?,
-    val category: String?
+    val category: String?,
+    val imageUrl: String?
 )

@@ -11,6 +11,7 @@ import com.example.presenters.eventList.EventListContract
 class ParisEventListAdapter : RecyclerView.Adapter<ParisEventListAdapter.ViewHolder>() {
 
     private var eventList = emptyList<EventListContract.EventItemUiModel>()
+    var onItemClicked: ((position: Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.paris_event_item, null)
@@ -22,6 +23,9 @@ class ParisEventListAdapter : RecyclerView.Adapter<ParisEventListAdapter.ViewHol
         holder.summaryTextView.text = eventList[position].summary
         holder.categoryTextView.text = eventList[position].category
         holder.addressTextView.text = eventList[position].address
+        holder.itemView.setOnClickListener {
+            onItemClicked?.invoke(position)
+        }
     }
 
     override fun getItemCount(): Int {
