@@ -5,5 +5,6 @@ class EventListData (
 )
 
 class Record (
+    val recordid: String,
     val fields: Map<String, Any>
 )

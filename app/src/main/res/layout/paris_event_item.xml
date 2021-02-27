@@ -25,10 +25,32 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintLeft_toLeftOf="@id/title"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/item_text_margin_top"
         android:maxLines="2"
         android:ellipsize="end"
         android:text="This is the summary which should be a short description and could be over 2 lines"
+        />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/summary"
+        app:layout_constraintLeft_toLeftOf="@id/summary"
+        android:layout_marginTop="@dimen/item_text_margin_top"
+        android:textStyle="bold"
+        tools:text="the category"
+        />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/category"
+        app:layout_constraintLeft_toLeftOf="@id/category"
+        android:layout_marginTop="@dimen/item_text_margin_top"
+        android:textStyle="italic"
+        tools:text="the address "
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

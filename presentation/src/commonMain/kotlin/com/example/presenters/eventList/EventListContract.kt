@@ -11,7 +11,9 @@ interface EventListContract {
     abstract class Presenter: BasePresenter()
 
     data class EventItemUiModel(
-        val title: String,
-        val summary: String
+        val title: String?,
+        val summary: String?,
+        val category: String?,
+        val address: String?
     )
 }

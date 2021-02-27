@@ -2,7 +2,7 @@ package com.example.presenters.eventList
 
 import com.example.domain.events.entity.Event
 import com.example.domain.events.usecase.GetEventsListUseCase
-import com.nowtv.domain.common.BaseMapperToPresentation
+import com.example.domain.common.BaseMapperToPresentation
 
 class EventListPresenter(
     private val view:EventListContract.View,

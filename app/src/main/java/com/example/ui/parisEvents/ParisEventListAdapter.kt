@@ -20,6 +20,8 @@ class ParisEventListAdapter : RecyclerView.Adapter<ParisEventListAdapter.ViewHol
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleTextView.text = eventList[position].title
         holder.summaryTextView.text = eventList[position].summary
+        holder.categoryTextView.text = eventList[position].category
+        holder.addressTextView.text = eventList[position].address
     }
 
     override fun getItemCount(): Int {
@@ -34,5 +36,7 @@ class ParisEventListAdapter : RecyclerView.Adapter<ParisEventListAdapter.ViewHol
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val titleTextView = view.findViewById<TextView>(R.id.title)
         val summaryTextView = view.findViewById<TextView>(R.id.summary)
+        val categoryTextView = view.findViewById<TextView>(R.id.category)
+        val addressTextView = view.findViewById<TextView>(R.id.address)
     }
 }

@@ -1,4 +1,4 @@
-package com.nowtv.domain.common
+package com.example.domain.common
 
 abstract class BaseMapperToData<SOURCE, TARGET> {
 

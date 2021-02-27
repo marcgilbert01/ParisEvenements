@@ -1,7 +1,7 @@
 package com.example.domain.events.usecase
 
 import com.example.domain.events.entity.Event
-import com.nowtv.domain.common.UseCase
+import com.example.domain.common.UseCase
 
 interface GetEventsListUseCase : UseCase<List<Event>, GetEventsListUseCase.Params> {
 

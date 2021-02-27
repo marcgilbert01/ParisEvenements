@@ -2,7 +2,7 @@ package com.example.presenters.eventList
 
 import com.example.domain.events.entity.Event
 import com.example.domain.events.usecase.GetEventsListUseCase
-import com.nowtv.domain.common.BaseMapperToPresentation
+import com.example.domain.common.BaseMapperToPresentation
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
