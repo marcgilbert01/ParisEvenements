@@ -12,7 +12,6 @@ interface EventListContract {
 
     data class EventItemUiModel(
         val title: String,
-        val summary: String,
-        val description: String
+        val summary: String
     )
 }

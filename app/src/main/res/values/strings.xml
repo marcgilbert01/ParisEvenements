@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Paris Evenements</string>
+    <string name="paris_evenements_label">Paris Événements</string>
 </resources>

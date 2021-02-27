@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paris_event_item_height">200dp</dimen>
+    <dimen name="paris_event_item_padding">20dp</dimen>
+    <dimen name="paris_event_title_text_size">18sp</dimen>
+    <dimen name="paris_event_list_main_title_text_size">38sp</dimen>
+</resources>
